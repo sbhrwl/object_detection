@@ -1,0 +1,4 @@
+schema: '2.0'
+stages:
+  save_raw_data:
+    cmd: python main.py
