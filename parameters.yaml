@@ -1,7 +1,11 @@
 base:
   project_name: Social Distance Violation
 
+input_config:
+  image_location: inputs/image.jpg
+
 yolo_config:
   model_directory: tained_model
   config_file: yolov3.cfg
   weights_file: yolov3.weights
+  labels_file: coco.names

@@ -1,0 +1,21 @@
+import cv2
+from get_parameters import get_parameters
+
+
+def load_image(image_to_read):
+    img = cv2.imread(image_to_read, -1)
+    return img
+
+
+def show_image(image_to_show):
+    cv2.imshow('Image Window', image_to_show)
+    pressed_key = cv2.waitKey(0)
+    if pressed_key == 27:  # Escape Key
+        cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    config = get_parameters()
+    image_location = config["input_config"]["image_location"]
+    image = load_image(image_location)
+    show_image(image)
