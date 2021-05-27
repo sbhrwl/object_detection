@@ -1,0 +1,7 @@
+base:
+  project_name: Social Distance Violation
+
+yolo_config:
+  model_directory: tained_model
+  config_file: yolov3.cfg
+  weights_file: yolov3.weights

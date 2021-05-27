@@ -1,3 +1,6 @@
 stages:
-  save_raw_data:
-    cmd: python main.py
+  read_image:
+    cmd: python show_image.py
+
+  load_model:
+    cmd: python load_model.py

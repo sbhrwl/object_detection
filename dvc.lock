@@ -1,4 +1,8 @@
 schema: '2.0'
 stages:
   save_raw_data:
-    cmd: python main.py
+    cmd: python load_image.py
+  read_image:
+    cmd: python show_image.py
+  load_model:
+    cmd: python load_model.py
