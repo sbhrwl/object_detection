@@ -9,3 +9,9 @@ yolo_config:
   config_file: yolov3.cfg
   weights_file: yolov3.weights
   labels_file: coco.names
+
+configuration_variables:
+  use_gpu: false
+  min_confidence_score: 0.3
+  nms_threshold: 0.3
+  minimum_distance: 50

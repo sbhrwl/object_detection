@@ -13,7 +13,13 @@ def load_labels(labels_file_path):
     return labels
 
 
-if __name__ == '__main__':
+def get_output_layers(model_name):
+    output_layer_numbers = model_name.getLayerNames()
+    output_layer_numbers = [output_layer_numbers[i[0] - 1] for i in model_name.getUnconnectedOutLayers()]
+    return output_layer_numbers
+
+
+def get_model_labels_and_output_layers():
     config = get_parameters()
     yolo_config = config["yolo_config"]
     model_directory = yolo_config["model_directory"]
@@ -25,8 +31,15 @@ if __name__ == '__main__':
     weights_path = os.path.sep.join([model_directory, weights_file])
 
     model = load_model(config_path, weights_path)
-    print(model)
 
     labels_path = os.path.sep.join([model_directory, labels_file])
     LABELS = load_labels(labels_path)
-    print(LABELS)
+
+    ln = get_output_layers(model)
+
+    return model, LABELS, ln
+
+
+if __name__ == '__main__':
+    get_model_labels_and_output_layers()
+

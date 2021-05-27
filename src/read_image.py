@@ -2,8 +2,10 @@ import cv2
 from get_parameters import get_parameters
 
 
-def load_image(image_to_read):
-    img = cv2.imread(image_to_read, -1)
+def load_image():
+    config = get_parameters()
+    image_location = config["input_config"]["image_location"]
+    img = cv2.imread(image_location, -1)
     return img
 
 
@@ -15,7 +17,5 @@ def show_image(image_to_show):
 
 
 if __name__ == '__main__':
-    config = get_parameters()
-    image_location = config["input_config"]["image_location"]
-    image = load_image(image_location)
+    image = load_image()
     show_image(image)

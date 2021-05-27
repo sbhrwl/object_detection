@@ -6,3 +6,7 @@ stages:
     cmd: python src/read_image.py
   load_model:
     cmd: python src/load_model_and_labels.py
+  get_model_labels_and_output_layers:
+    cmd: python src/get_model_labels_and_output_layers.py
+  main_execution:
+    cmd: python src/main.py
