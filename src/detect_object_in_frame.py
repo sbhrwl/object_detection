@@ -2,9 +2,9 @@ import numpy as np
 
 
 def get_detection_details(frame, each_layer_output, minimum_confidence_score, label_index):
+    confidences = []
     boxes = []
     centroids = []
-    confidences = []
     (H, W) = frame.shape[:2]
 
     for output in each_layer_output:
@@ -32,8 +32,11 @@ def get_detection_details(frame, each_layer_output, minimum_confidence_score, la
                 y = int(centerY - (height / 2))
 
                 # Step 6: Update our list of bounding box coordinates, centroids, and confidences
+                confidences.append(float(confidence))
                 boxes.append([x, y, int(width), int(height)])
                 centroids.append((centerX, centerY))
-                confidences.append(float(confidence))
 
-    return boxes, centroids, confidences
+    # print("get_detection_details", confidences)
+    # print("get_detection_details", boxes)
+    # print("get_detection_details", centroids)
+    return confidences, boxes, centroids
