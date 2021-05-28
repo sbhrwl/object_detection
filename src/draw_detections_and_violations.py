@@ -28,11 +28,4 @@ def draw_detections_and_violations(frame, detection_results, violations):
                     (0, 0, 255),
                     3)
 
-    # Step 7: Draw the Output Frame
-    cv2.imshow("Frame", frame)
-    pressed_key = cv2.waitKey(0)
-    if pressed_key == 27:  # Escape Key
-        cv2.destroyAllWindows()
-
-    # Step 8: Save Output Frame
-    cv2.imwrite('artifacts/output_frame.jpg', frame)
+    return frame

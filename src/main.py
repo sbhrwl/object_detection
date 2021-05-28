@@ -3,6 +3,8 @@ from get_model_labels_and_output_layers import get_model_labels_and_output_layer
 from object_detection import get_detection_results
 from detect_violations import detect_violations
 from draw_detections_and_violations import draw_detections_and_violations
+from write_and_save_frame import write_and_save_frame
+
 
 if __name__ == '__main__':
     frame = load_image()
@@ -22,4 +24,5 @@ if __name__ == '__main__':
     # Confidence Score, Bounding Box coordinates (x1, y1, x2, y2), Centroid
     violations = detect_violations(detection_results)
     # print(violations)
-    draw_detections_and_violations(frame, detection_results, violations)
+    output_frame = draw_detections_and_violations(frame, detection_results, violations)
+    write_and_save_frame(output_frame)
