@@ -1,6 +1,6 @@
-import numpy as np
 import cv2
 from get_parameters import get_parameters
+from detect_object_in_frame import get_detection_details
 
 
 def convert_image_to_blob(image):
@@ -26,16 +26,16 @@ def write_list_to_file(input_list, file_location):
 def detect_object(frame, net, ln, object_index):
     config = get_parameters()
     each_layer_output_file = config["artifacts"]["each_layer_output"]
-    # configuration_variables = config["configuration_variables"]
-    # min_confidence_score = configuration_variables["min_confidence_score"]
+    configuration_variables = config["configuration_variables"]
+    minimum_confidence_score = configuration_variables["minimum_confidence_score"]
     # nms_threshold = configuration_variables["nms_threshold"]
 
     # results = []
     blob = convert_image_to_blob(frame)
     each_layer_output = perform_forward_pass(net, blob, ln)
     write_list_to_file(each_layer_output, each_layer_output_file)
-    print(object_index)
-
-
-if __name__ == '__main__':
-    print("Hi")
+    boxes, centroids, confidences = get_detection_details(frame,
+                                                          each_layer_output,
+                                                          minimum_confidence_score,
+                                                          object_index)
+    print(boxes)
