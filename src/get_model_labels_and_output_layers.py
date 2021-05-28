@@ -42,4 +42,3 @@ def get_model_labels_and_output_layers():
 
 if __name__ == '__main__':
     get_model_labels_and_output_layers()
-
