@@ -3,6 +3,7 @@ base:
 
 input_config:
   image_location: inputs/image.jpg
+  video_location: inputs/pedestrians.mp4
 
 yolo_config:
   model_directory: tained_model

@@ -1,19 +1,18 @@
-from read_image import load_image
+from read_image import load_image, show_image
 from get_model_labels_and_output_layers import get_model_labels_and_output_layers
 from object_detection import get_detection_results
 from detect_violations import detect_violations
 from draw_detections_and_violations import draw_detections_and_violations
 from write_and_save_frame import write_and_save_frame
 
-
 if __name__ == '__main__':
+    frame = load_image()
+    # show_image(frame)
     model, LABELS, layer_numbers = get_model_labels_and_output_layers()
     # print(model)
     # print(LABELS)
     # print(layer_numbers)
     person_index = LABELS.index("person")
-
-    frame = load_image()
     detection_results = get_detection_results(frame,
                                               model,
                                               layer_numbers,

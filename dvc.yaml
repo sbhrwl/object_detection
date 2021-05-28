@@ -6,4 +6,5 @@ stages:
 #    cmd: python src/get_model_labels_and_output_layers.py
 
   main_execution:
-      cmd: python src/main.py
+#      cmd: python src/detection_with_image.py
+      cmd: python src/detection_with_video.py
