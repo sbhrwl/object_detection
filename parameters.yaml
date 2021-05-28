@@ -18,3 +18,4 @@ configuration_variables:
 
 artifacts:
   each_layer_output: artifacts/each_layer_output.txt
+  output_frame: artifacts/output_frame.jpg

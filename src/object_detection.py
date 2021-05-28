@@ -36,9 +36,6 @@ def detect_object(frame, net, ln, object_index, minimum_confidence_score, each_l
                                                           each_layer_output,
                                                           minimum_confidence_score,
                                                           object_index)
-    # print("detect_object", confidences)
-    # print("detect_object", boxes)
-    # print("detect_object", centroids)
     return confidences, boxes, centroids
 
 
