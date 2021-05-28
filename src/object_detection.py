@@ -23,12 +23,17 @@ def write_list_to_file(input_list, file_location):
         outfile.write("\n".join(str(item) for item in input_list))
 
 
+def apply_non_maxima_suppression(boxes, confidences, minimum_confidence, nms_threshold):
+    indexes = cv2.dnn.NMSBoxes(boxes, confidences, minimum_confidence, nms_threshold)
+    return indexes
+
+
 def detect_object(frame, net, ln, object_index):
     config = get_parameters()
     each_layer_output_file = config["artifacts"]["each_layer_output"]
     configuration_variables = config["configuration_variables"]
     minimum_confidence_score = configuration_variables["minimum_confidence_score"]
-    # nms_threshold = configuration_variables["nms_threshold"]
+    nms_threshold_value = configuration_variables["nms_threshold_value"]
 
     # results = []
     blob = convert_image_to_blob(frame)
@@ -38,4 +43,10 @@ def detect_object(frame, net, ln, object_index):
                                                           each_layer_output,
                                                           minimum_confidence_score,
                                                           object_index)
-    print(boxes)
+    # print(boxes)
+    # print(centroids)
+    # print(confidences)
+    indexes = apply_non_maxima_suppression(boxes, confidences, minimum_confidence_score, nms_threshold_value)
+    return indexes
+
+

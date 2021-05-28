@@ -13,7 +13,7 @@ yolo_config:
 configuration_variables:
   use_gpu: false
   minimum_confidence_score: 0.3
-  nms_threshold: 0.3
+  nms_threshold_value: 0.3
   minimum_distance: 50
 
 artifacts:
