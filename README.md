@@ -20,7 +20,7 @@ pip install -r requirements.txt
 # Detection from the Image
 
 ```
-detection_with_image.py
+detect_image.py
 ```
 
 i. Load model and related parameters: get_model_labels_and_output_layers.py
@@ -72,7 +72,7 @@ iii. detect_violations.py
  # Detection from the Video
 
 ```
-detection_with_video.py
+detect_video.py
 ```
 
 Same as above process, except that we process for each frame

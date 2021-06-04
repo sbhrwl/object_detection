@@ -1,5 +1,11 @@
-dvc
-imutils==0.5.3
-numpy==1.18.5
-opencv-python==4.2.0.34
-scipy==1.4.1
+opencv-python
+lxml
+tqdm
+tensorflow
+absl-py
+easydict
+matplotlib
+pillow
+pytesseract
+scipy
+imutils

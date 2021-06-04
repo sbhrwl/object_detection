@@ -2,11 +2,11 @@ base:
   project_name: Social Distance Violation
 
 input_config:
-  image_location: inputs/image.jpg
-  video_location: inputs/pedestrians.mp4
+  image_location: data/images/image.jpg
+  video_location: data/video/test.mp4
 
 yolo_config:
-  model_directory: tained_model
+  model_directory: artifacts/yolo_trained_model_artifacts
   config_file: yolov3.cfg
   weights_file: yolov3.weights
   labels_file: coco.names
@@ -18,5 +18,5 @@ configuration_variables:
   minimum_distance: 150
 
 artifacts:
-  each_layer_output: artifacts/each_layer_output.txt
-  output_frame: artifacts/output_frame.jpg
+  each_layer_output: artifacts/each_layer_output/each_layer_output.txt
+  output_frame: artifacts/detections/image/output_frame.jpg
