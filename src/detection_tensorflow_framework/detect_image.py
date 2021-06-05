@@ -74,6 +74,19 @@ def main(_argv):
         # allowed_classes = ['person']
 
         # Additional Operations
+        # CROP Images: Store Cropped images
+        if FLAGS.crop:
+            crop_path = os.path.join(os.getcwd(), 'artifacts', 'detections', 'crop', image_name)
+            try:
+                os.mkdir(crop_path)
+            except FileExistsError:
+                pass
+            crop_objects(cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB), detection_results, crop_path, allowed_classes)
+
+        # OCR: Perform general text extraction using Tesseract OCR on object detection bounding box
+        if FLAGS.ocr:
+            ocr(cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB), detection_results)
+
         # Count: perform counting of objects
         if FLAGS.count:
             # count objects found
@@ -88,7 +101,6 @@ def main(_argv):
                                     counted_classes,
                                     allowed_classes=allowed_classes,
                                     read_plate=FLAGS.plate)
-
         # Step 5: Draw Boundary Box
         else:
             image = utils.draw_bbox(original_image,
