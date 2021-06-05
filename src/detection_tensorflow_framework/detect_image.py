@@ -1,13 +1,16 @@
 # python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/kite.jpg
 import sys
+
 sys.path.append('./src/detection_tensorflow_framework/core')
 from read_image import load_model, load_image
 from object_detection import get_detection_results
 
 import os
+
 # comment out below line to enable tensorflow outputs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
+
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
@@ -70,12 +73,29 @@ def main(_argv):
         # 4.2: custom allowed classes (uncomment line below to allow detections for only people)
         # allowed_classes = ['person']
 
+        # Additional Operations
+        # Count: perform counting of objects
+        if FLAGS.count:
+            # count objects found
+            counted_classes = count_objects(detection_results, by_class=True, allowed_classes=allowed_classes)
+            # loop through dict and print
+            for key, value in counted_classes.items():
+                print("Number of {}s: {}".format(key, value))
+            # Step 5: Draw Boundary Box
+            image = utils.draw_bbox(original_image,
+                                    detection_results,
+                                    FLAGS.info,
+                                    counted_classes,
+                                    allowed_classes=allowed_classes,
+                                    read_plate=FLAGS.plate)
+
         # Step 5: Draw Boundary Box
-        image = utils.draw_bbox(original_image,
-                                detection_results,
-                                FLAGS.info,
-                                allowed_classes=allowed_classes,
-                                read_plate=FLAGS.plate)
+        else:
+            image = utils.draw_bbox(original_image,
+                                    detection_results,
+                                    FLAGS.info,
+                                    allowed_classes=allowed_classes,
+                                    read_plate=FLAGS.plate)
 
         # Step 6: Show Image
         image = Image.fromarray(image.astype(np.uint8))
