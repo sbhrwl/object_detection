@@ -1,7 +1,7 @@
 import cv2
 import imutils
 import sys
-sys.path.append('./src/opencv-dnn/core')
+sys.path.append('./src/detection_opencv-dnn/core')
 from get_model_labels_and_output_layers import get_model_labels_and_output_layers
 from object_detection import get_detection_results
 from detect_violations import detect_violations

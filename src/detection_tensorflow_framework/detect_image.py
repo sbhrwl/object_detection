@@ -1,26 +1,25 @@
 # python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/kite.jpg
+import sys
+sys.path.append('./src/detection_tensorflow_framework/core')
+from read_image import load_model, load_image
+from object_detection import get_detection_results
 
 import os
-
 # comment out below line to enable tensorflow outputs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
-
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
 from tensorflow.compat.v1 import ConfigProto
 from tensorflow.compat.v1 import InteractiveSession
 
-from absl import app, flags
-from absl.flags import FLAGS
 import core.utils as utils
 from core.functions import *
 from PIL import Image
 import numpy as np
-
-from core.read_image import load_model, load_image
-from core.object_detection import get_detection_results
+from absl import app, flags
+from absl.flags import FLAGS
 
 flags.DEFINE_string('weights', './checkpoints/yolov4-416', 'path to weights file')
 flags.DEFINE_integer('size', 416, 'resize images to')
@@ -62,7 +61,7 @@ def main(_argv):
         images_data = np.asarray(images_data).astype(np.float32)
 
         # Step 3: Get Detection Results
-        detection_details = get_detection_results(yolo_v4_model, images_data, FLAGS.iou, FLAGS.score, original_image)
+        detection_results = get_detection_results(yolo_v4_model, images_data, FLAGS.iou, FLAGS.score, original_image)
 
         # Step 4: Classes to show as Detection
         class_names = utils.read_class_names(cfg.YOLO.CLASSES)
@@ -73,7 +72,7 @@ def main(_argv):
 
         # Step 5: Draw Boundary Box
         image = utils.draw_bbox(original_image,
-                                detection_details,
+                                detection_results,
                                 FLAGS.info,
                                 allowed_classes=allowed_classes,
                                 read_plate=FLAGS.plate)

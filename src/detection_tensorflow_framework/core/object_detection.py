@@ -1,15 +1,13 @@
 import tensorflow as tf
+from detect_object_in_frame import get_detection_details
 
 
 def detect_object(model, data):
     infer = model.signatures['serving_default']
     batch_data = tf.constant(data)
     predicted_boundary_box = infer(batch_data)
-    for key, value in predicted_boundary_box.items():
-        boxes = value[:, :, 0:4]
-        predicted_confidence = value[:, :, 4:]
-
-    return predicted_boundary_box, boxes, predicted_confidence
+    boxes, predicted_confidence = get_detection_details(predicted_boundary_box)
+    return boxes, predicted_confidence
 
 
 def apply_non_max_suppression(boxes, confidence_score, iou, score):
@@ -43,7 +41,7 @@ def format_boundary_box(image, boxes):
 
 
 def get_detection_results(yolo_v4_model, images_data, iou, score, original_image):
-    bbox, boxes, confidence_score = detect_object(yolo_v4_model, images_data)
+    boxes, confidence_score = detect_object(yolo_v4_model, images_data)
 
     boxes, scores, classes, valid_detections = apply_non_max_suppression(boxes,
                                                                          confidence_score,

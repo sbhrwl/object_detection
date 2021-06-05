@@ -28,7 +28,7 @@ def apply_non_maxima_suppression(boxes, confidences, minimum_confidence, nms_thr
     return indexes
 
 
-def detect_object(frame, net, ln, object_index, minimum_confidence_score, each_layer_output_file):
+def detect_object(net, frame, ln, object_index, minimum_confidence_score, each_layer_output_file):
     blob = convert_image_to_blob(frame)
     each_layer_output = perform_forward_pass(net, blob, ln)
     write_list_to_file(each_layer_output, each_layer_output_file)
@@ -46,8 +46,8 @@ def get_detection_results(frame, net, ln, object_index):
     minimum_confidence_score = configuration_variables["minimum_confidence_score"]
     nms_threshold_value = configuration_variables["nms_threshold_value"]
 
-    confidences, boxes, centroids = detect_object(frame,
-                                                  net,
+    confidences, boxes, centroids = detect_object(net,
+                                                  frame,
                                                   ln,
                                                   object_index,
                                                   minimum_confidence_score,
