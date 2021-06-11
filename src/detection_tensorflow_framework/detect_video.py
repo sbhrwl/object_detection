@@ -1,8 +1,10 @@
 import os
+
 # comment out below line to enable tensorflow outputs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import time
 import tensorflow as tf
+
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
@@ -34,6 +36,7 @@ flags.DEFINE_boolean('dont_show', False, 'dont show video output')
 flags.DEFINE_boolean('info', False, 'print info on detections')
 flags.DEFINE_boolean('crop', False, 'crop detections from images')
 flags.DEFINE_boolean('plate', False, 'perform license plate recognition')
+
 
 def main(_argv):
     config = ConfigProto()
@@ -82,7 +85,7 @@ def main(_argv):
         else:
             print('Video has ended or failed, try a different video format!')
             break
-    
+
         frame_size = frame.shape[:2]
         image_data = cv2.resize(frame, (input_size, input_size))
         image_data = image_data / 255.
@@ -127,14 +130,14 @@ def main(_argv):
 
         # by default allow all classes in .names file
         allowed_classes = list(class_names.values())
-        
+
         # custom allowed classes (uncomment line below to allow detections for only people)
-        #allowed_classes = ['person']
+        # allowed_classes = ['person']
 
         # if crop flag is enabled, crop each detection and save it as new image
         if FLAGS.crop:
-            crop_rate = 150 # capture images every so many frames (ex. crop photos every 150 frames)
-            crop_path = os.path.join(os.getcwd(), 'detections', 'crop', video_name)
+            crop_rate = 150  # capture images every so many frames (ex. crop photos every 150 frames)
+            crop_path = os.path.join(os.getcwd(), 'artifacts', 'detections', 'crop', video_name)
             try:
                 os.mkdir(crop_path)
             except FileExistsError:
@@ -144,37 +147,43 @@ def main(_argv):
                 try:
                     os.mkdir(final_path)
                 except FileExistsError:
-                    pass          
+                    pass
                 crop_objects(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), pred_bbox, final_path, allowed_classes)
             else:
                 pass
 
         if FLAGS.count:
             # count objects found
-            counted_classes = count_objects(pred_bbox, by_class = False, allowed_classes=allowed_classes)
+            counted_classes = count_objects(pred_bbox, by_class=True, allowed_classes=allowed_classes)
             # loop through dict and print
             for key, value in counted_classes.items():
                 print("Number of {}s: {}".format(key, value))
-            image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, counted_classes, allowed_classes=allowed_classes, read_plate=FLAGS.plate)
+            image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, counted_classes, allowed_classes=allowed_classes,
+                                    read_plate=FLAGS.plate)
         else:
-            image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, allowed_classes=allowed_classes, read_plate=FLAGS.plate)
-        
+            image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, allowed_classes=allowed_classes,
+                                    read_plate=FLAGS.plate)
+
         fps = 1.0 / (time.time() - start_time)
         print("FPS: %.2f" % fps)
         result = np.asarray(image)
         cv2.namedWindow("result", cv2.WINDOW_AUTOSIZE)
         result = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-        
+
         if not FLAGS.dont_show:
             cv2.imshow("result", result)
-        
+
         if FLAGS.output:
             out.write(result)
         if cv2.waitKey(1) & 0xFF == ord('q'): break
     cv2.destroyAllWindows()
+
 
 if __name__ == '__main__':
     try:
         app.run(main)
     except SystemExit:
         pass
+
+# python src/detection_tensorflow_framework/detect_video.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/cars.mp4 --output ./artifacts/detections/video/results.avi
+# python src/detection_tensorflow_framework/detect_video.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --video 0 --output ./artifacts/detections/video/results.avi

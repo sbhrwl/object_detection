@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.spatial import distance as dist
-from get_parameters import get_parameters
+from src.detection_opencv_dnn.core.get_parameters import get_parameters
 
 
 def detect_violations(results):

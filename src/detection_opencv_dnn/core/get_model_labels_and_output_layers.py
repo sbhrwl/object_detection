@@ -1,6 +1,6 @@
 import cv2
 import os
-from get_parameters import get_parameters
+from src.detection_opencv_dnn.core.get_parameters import get_parameters
 
 
 def load_model(configuration, weights):

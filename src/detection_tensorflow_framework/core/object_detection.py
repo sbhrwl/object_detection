@@ -1,5 +1,5 @@
 import tensorflow as tf
-from detect_object_in_frame import get_detection_details
+from src.detection_tensorflow_framework.core.detect_object_in_frame import get_detection_details
 
 
 def detect_object(model, data):

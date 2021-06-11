@@ -1,5 +1,5 @@
 import cv2
-from get_parameters import get_parameters
+from src.detection_opencv_dnn.core.get_parameters import get_parameters
 
 
 def load_image():

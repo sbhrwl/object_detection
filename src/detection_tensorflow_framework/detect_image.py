@@ -1,26 +1,20 @@
-# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/kite.jpg
-import sys
-
-sys.path.append('./src/detection_tensorflow_framework/core')
-from read_image import load_model, load_image
-from object_detection import get_detection_results
-
+from src.detection_tensorflow_framework.core.read_image import load_model, load_image
+from src.detection_tensorflow_framework.core.object_detection import get_detection_results
+import core.utils as utils
+from core.functions import *
+import numpy as np
+from PIL import Image
+import tensorflow as tf
 import os
-
 # comment out below line to enable tensorflow outputs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
 
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
-from tensorflow.compat.v1 import ConfigProto
-from tensorflow.compat.v1 import InteractiveSession
 
-import core.utils as utils
-from core.functions import *
-from PIL import Image
-import numpy as np
+from tensorflow.compat.v1 import ConfigProto
+# from tensorflow.compat.v1 import InteractiveSession
 from absl import app, flags
 from absl.flags import FLAGS
 
@@ -42,8 +36,8 @@ flags.DEFINE_boolean('plate', False, 'perform license plate recognition')
 
 
 def main(_argv):
-    # config = ConfigProto()
-    # config.gpu_options.allow_growth = True
+    config = ConfigProto()
+    config.gpu_options.allow_growth = True
     # session = InteractiveSession(config=config)
     # STRIDES, ANCHORS, NUM_CLASS, XYSCALE = utils.load_config(FLAGS)
     input_size = FLAGS.size
@@ -124,3 +118,5 @@ if __name__ == '__main__':
         app.run(main)
     except SystemExit:
         pass
+
+# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/Bus75.jpg

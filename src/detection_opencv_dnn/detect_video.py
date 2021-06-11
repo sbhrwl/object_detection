@@ -1,12 +1,10 @@
 import cv2
 import imutils
-import sys
-sys.path.append('./src/detection_opencv-dnn/core')
-from get_model_labels_and_output_layers import get_model_labels_and_output_layers
-from object_detection import get_detection_results
-from detect_violations import detect_violations
-from draw_detections_and_violations import draw_detections_and_violations
-from write_and_save_video import write_and_save_video
+from src.detection_opencv_dnn.core.get_model_labels_and_output_layers import get_model_labels_and_output_layers
+from src.detection_opencv_dnn.core.object_detection import get_detection_results
+from src.detection_opencv_dnn.core.detect_violations import detect_violations
+from src.detection_opencv_dnn.core.draw_detections_and_violations import draw_detections_and_violations
+from src.detection_opencv_dnn.core.write_and_save_video import write_and_save_video
 
 
 if __name__ == '__main__':

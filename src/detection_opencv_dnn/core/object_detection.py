@@ -1,6 +1,6 @@
 import cv2
-from get_parameters import get_parameters
-from detect_object_in_frame import get_detection_details
+from src.detection_opencv_dnn.core.get_parameters import get_parameters
+from src.detection_opencv_dnn.core.detect_object_in_frame import get_detection_details
 
 
 def convert_image_to_blob(image):

@@ -10,8 +10,3 @@ def get_parameters():
     with open(parsed_args.config) as yaml_file:
         config = yaml.safe_load(yaml_file)
     return config
-
-
-if __name__ == "__main__":
-    data = get_parameters()
-    print('Parameters: ', data)
