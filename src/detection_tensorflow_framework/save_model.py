@@ -58,3 +58,5 @@ if __name__ == '__main__':
         app.run(main)
     except SystemExit:
         pass
+
+# python src/detection_tensorflow_framework/save_model.py --weights ./data/yolov4.weights --output ./artifacts/checkpoints/yolov4-416 --input_size 416 --model yolov4
