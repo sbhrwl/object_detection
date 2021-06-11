@@ -139,3 +139,5 @@ i. Object detected using only OpenCV is not optimal and using TensorFlow as a fr
 ii. TensorFlow is optimal at **training** part i.e. at data handling(tensors) and OpenCV is optimal in **accessing and manipulating** data (resize, crop, webcams etc.,). 
 
 iii. Thus, both are used together for object detection
+
+https://github.com/theAIGuysCode/yolov4-custom-functions
