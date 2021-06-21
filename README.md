@@ -2,11 +2,12 @@
 * [Overview](#overview)
 * [Project Setup](#project-setup)
 * [OpenCV DNN](#opencv-dnn)
-  * [Detection from the Image](#detection-from-the-image)
-  * [Detection from the Video](#detection-from-the-video)
+  * [Detection from the Image using OpenCV with DNN](#detection-from-the-image-using-opencv-with-dnn)
+  * [Detection from the Video using OpenCV with DNN](#detection-from-the-video-using-opencv-with-dnn)
 * [Tensorflow](#tensorflow)
-  * [Detection from the Image](#detection-from-the-image)
-  * [Detection from the Video](#detection-from-the-video)
+  * [Detection from the Image using OpenCV with tensorflow](#detection-from-the-image-using-opencv-with-tensorflow)
+  * [Detection from the Video using OpenCV with tensorflow](#detection-from-the-video-using-opencv-with-tensorflow)
+* [Conclusion](#conclusion)
 
 # Overview
 * Step 1: Distance Calculation based on Centroids returned by the model
@@ -35,7 +36,7 @@ pip install -r requirements.txt
 * Initially only Caffe and Torch models were supported. Over the period support for different frameworks/libraries like TensorFlow is being added.
 * **Support for YOLO/DarkNet has been added recently**
 
-## Detection from the Image
+## Detection from the Image using OpenCV with DNN
 ```
 detect_image.py
 ```
@@ -79,7 +80,7 @@ detect_image.py
  ```
 * draw_detections_and_violations.py
  
- ## Detection from the Video
+ ## Detection from the Video using OpenCV with DNN
 ```
 detect_video.py
 ```
@@ -116,6 +117,10 @@ Same as above process, except that we process for each frame
 * OpenCV offers **GPU module**
 * You will be the one to pick which classes and methods to use so at least **some knowledge about GPU programming** will be helpful. 
 * In Tensorflow, you can **easily** use the GPU implementation by setting the number of GPUs you have or if you want to use both
+
+## Detection from the Image using OpenCV with tensorflow
+
+## Detection from the Video using OpenCV with tensorflow
 
 ## Conclusion
 * Object detected using only OpenCV is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
