@@ -9,7 +9,9 @@
   * [Detection from the Video](#detection-from-the-video)
 
 # Overview
-* OpenCV is a library for computer vision
+* Step 1: Distance Calculation based on Centroids returned by the model
+* Step 2. Compute the Euclidean distances between "All pairs" of the centroids
+* Step 3: Compare calculated distance with the Minimum distance to be flagged as Violation
 
 ## Project Setup 
 * Create environment
