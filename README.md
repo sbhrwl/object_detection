@@ -1,33 +1,46 @@
 # YoloV4_Detect_Social_Distance_Violations
+* [Overview](#overview)
+* [Project Setup](#project-setup)
+* [OpenCV DNN](#opencv-dnn)
+  * [Detection from the Image](#detection-from-the-image)
+  * [Detection from the Video](#detection-from-the-video)
+* [Tensorflow](#tensorflow)
+  * [Detection from the Image](#detection-from-the-image)
+  * [Detection from the Video](#detection-from-the-video)
 
-## Setup 
+# Overview
+* OpenCV is a library for computer vision
 
-Create env 
+## Project Setup 
+* Create environment
 ```bash
 conda create -n social_distance_violation python=3.7 -y
 ```
-
-Activate env
+* Activate environment
 ```bash
 conda activate social_distance_violation
 ```
-
-Install the req
+* Install the requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
 
-# Detection from the Image
+# OpenCV DNN
+## Overview of DNN Module
+* DNN (Deep Neural Network) module was initially part of opencv_contrib repo. 
+* It has been moved to the master branch of opencv repo last year, giving users the ability to run inference on pre-trained deep learning models within OpenCV itself.
+* One thing to note here is, **dnn module** is not meant be used for training. **It’s just for running inference on images/videos**.
+* Initially only Caffe and Torch models were supported. Over the period support for different frameworks/libraries like TensorFlow is being added.
+* **Support for YOLO/DarkNet has been added recently**
 
+## Detection from the Image
 ```
 detect_image.py
 ```
-
 * Load model and related parameters: get_model_labels_and_output_layers.py
 * Object_detection.py
   * get_detection_results.py
   * detect_object
-
 ```
     convert_image_to_blob(frame)
 
@@ -38,7 +51,6 @@ detect_image.py
                                                           
     indexes = apply_non_maxima_suppression(boxes, confidences, minimum_confidence_score, nms_threshold_value)
 ```
-
 * detect_violations.py
 ```
     if len(results) >= 2:
@@ -65,14 +77,11 @@ detect_image.py
  ```
 * draw_detections_and_violations.py
  
- # Detection from the Video
-
+ ## Detection from the Video
 ```
 detect_video.py
 ```
-
 Same as above process, except that we process for each frame
-
 ```
     # video_stream = cv2.VideoCapture(-1)
     video_stream = cv2.VideoCapture("inputs/pedestrians.mp4")
@@ -97,19 +106,7 @@ Same as above process, except that we process for each frame
         output_frame = draw_detections_and_violations(frame, detection_results, violations)
         write_and_save_video(output_frame)
 ```
-
-
-## OpenCV
-* OpenCV is a library for computer vision
-
-### OpenCV DNN Module
-* DNN (Deep Neural Network) module was initially part of opencv_contrib repo. 
-* It has been moved to the master branch of opencv repo last year, giving users the ability to run inference on pre-trained deep learning models within OpenCV itself.
-* One thing to note here is, **dnn module** is not meant be used for training. **It’s just for running inference on images/videos**.
-* Initially only Caffe and Torch models were supported. Over the period support for different frameworks/libraries like TensorFlow is being added.
-* **Support for YOLO/DarkNet has been added recently**.
-
-## Tensorflow
+# Tensorflow
 * TensorFlow is a framework for machine learning, commonly used for machine learning specifically the family of deep leaning algorithms
 * Deep leaning algorithms will take a long time to finish and that’s where the use of **GPUs** come in because they provide better processing speed compared to CPUs. 
 * The flexible architecture of TensorFlow allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API
@@ -118,10 +115,11 @@ Same as above process, except that we process for each frame
 * You will be the one to pick which classes and methods to use so at least **some knowledge about GPU programming** will be helpful. 
 * In Tensorflow, you can **easily** use the GPU implementation by setting the number of GPUs you have or if you want to use both
 
-## Summary
+## Conclusion
 * Object detected using only OpenCV is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
 * TensorFlow is optimal at **training** part i.e. at data handling(tensors) and OpenCV is optimal in **accessing and manipulating** data (resize, crop, webcams etc.,). 
 * Thus, both are used together for object detection
+
 
 https://towardsdatascience.com/yolo-object-detection-with-opencv-and-python-21e50ac599e9
 https://github.com/theAIGuysCode/yolov4-custom-functions
