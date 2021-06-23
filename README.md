@@ -275,6 +275,7 @@ Count can work in 2 modes
  return counts
 ```
 ### License Plate
+[License Plate](https://github.com/sbhrwl/YoloV4_Detect_Social_Distance_Violations/blob/main/src/detection_tensorflow_framework/core/utils.py)
 ```
 if read_plate:
     height_ratio = int(image_h / 25)
@@ -303,14 +304,14 @@ python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --
 # OCR for any Image
 python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --ocr
 
+# Run yolov4 model while counting total objects detected
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
+# Run yolov4 model while counting objects per class by Upodating by_class parameter as true in count_objects method
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
+
 # Run License Plate Recognition
 python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/car2.jpg --plate
 python detect_video.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --video ./data/video/license_plate.mp4 --output ./detections/recognition.avi --plate
-
-# Run yolov4 model while counting total objects detected
-python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
-# Run yolov4 model while counting objects per class
-python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
 ```
 ## Conclusion
 * Object detected using only OpenCV is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
