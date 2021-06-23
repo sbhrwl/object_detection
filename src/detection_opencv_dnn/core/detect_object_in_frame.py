@@ -6,8 +6,9 @@ def get_detection_details(frame, each_layer_output, minimum_confidence_score, la
     boxes = []
     centroids = []
     (H, W) = frame.shape[:2]
-
+    print(np.shape(each_layer_output))
     for output in each_layer_output:
+        print(np.shape(output))
         # loop over detections
         for detection in output:
             scores = detection[5:]
