@@ -11,6 +11,8 @@
     * [Crop](#crop)
     * [OCR](#ocr)
     * [Count Objects of a class](#count-objects-of-a-class)
+    * [License Plate](#license-plate)
+    * [Commands](#commands)
 * [Conclusion](#conclusion)
 
 # Overview
@@ -271,6 +273,44 @@ Count can work in 2 modes
      counts['total object'] = num_objects
 
  return counts
+```
+### License Plate
+```
+if read_plate:
+    height_ratio = int(image_h / 25)
+    plate_number = recognize_plate(image, coor)
+    if plate_number != None:
+        cv2.putText(image, plate_number, (int(coor[0]), int(coor[1] - height_ratio)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1.25, (255, 255, 0), 2)
+```
+
+## Commands
+
+```
+# custom yolov4
+python save_model.py --weights ./data/custom.weights --output ./checkpoints/custom-416 --input_size 416 --model yolov4 
+
+# Run custom yolov4 tensorflow model
+python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/car.jpg
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --info
+
+# Run yolov4 on webcam
+python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video 0 --output ./detections/results.avi
+
+# Crop
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --crop
+
+# OCR for any Image
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --ocr
+
+# Run License Plate Recognition
+python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/car2.jpg --plate
+python detect_video.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --video ./data/video/license_plate.mp4 --output ./detections/recognition.avi --plate
+
+# Run yolov4 model while counting total objects detected
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
+# Run yolov4 model while counting objects per class
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg --count
 ```
 ## Conclusion
 * Object detected using only OpenCV is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
