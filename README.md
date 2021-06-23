@@ -194,6 +194,8 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
 * We already have information of **Boundary box** for the detection
 * Crop the image using the coordinates of the Boundary Box
 ```
+# get box coordinates
+xmin, ymin, xmax, ymax = boxes[i]
 # crop detection from image (take an additional 5 pixels around all edges)
 cropped_img = img[int(ymin) - 5:int(ymax) + 5, int(xmin) - 5:int(xmax) + 5]
 ```
@@ -204,7 +206,72 @@ img_path = os.path.join(path, img_name)
 cv2.imwrite(img_path, cropped_img)
 ```
 ### OCR
+* Use same method as above for cropping an image
+```
+# get box coordinates
+xmin, ymin, xmax, ymax = boxes[i]
+# get the subimage that makes up the bounded region and take an additional 5 pixels on each side
+box = img[int(ymin) - 5:int(ymax) + 5, int(xmin) - 5:int(xmax) + 5]
+```
+* Greyscale the Region within Bounding box
+```
+# grayscale region within bounding box
+gray = cv2.cvtColor(box, cv2.COLOR_RGB2GRAY)
+```
+* Threshold threshold the image using **OTSUS** method to **preprocess for tesseract**
+```
+thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+```
+* Perform a median blur to smooth image slightly
+```
+blur = cv2.medianBlur(thresh, 3)
+# resize image to double the original size as tesseract does better with certain text size
+blur = cv2.resize(blur, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+```
+* Run **Tesseract**
+```
+try:
+    text = pytesseract.image_to_string(blur, config='--psm 11 --oem 3')
+    print("Class: {}, Text Extracted: {}".format(class_name, text))
+except:
+    text = None
+```
+* We have Output **text**
+#### Disclaimer: 
+* In order to run tesseract OCR you must first download the binary files and set them up on your local machine. 
+* Please do so before proceeding or commands will not run as expected!
+* Official Tesseract OCR Github Repo: tesseract-ocr/tessdoc
+* For Windows [Windows Install](https://github.com/UB-Mannheim/tesseract/wiki)
+
 ### Count Objects of a class
+Count can work in 2 modes
+* Count Total number of objects detected
+* Count Total number of objects detected for a **Particular Class**
+```
+ boxes, scores, classes, num_objects = data
+ # create dictionary to hold count of objects
+ counts = dict()
+
+ # if by_class = True then count objects per class
+ if by_class:
+     class_names = read_class_names(cfg.YOLO.CLASSES)
+
+     # loop through total number of objects found
+     for i in range(num_objects):
+         # grab class index and convert into corresponding class name
+         class_index = int(classes[i])
+         class_name = class_names[class_index]
+         if class_name in allowed_classes:
+             counts[class_name] = counts.get(class_name, 0) + 1
+         else:
+             continue
+
+ # else count total objects found
+ else:
+     counts['total object'] = num_objects
+
+ return counts
+```
 ## Conclusion
 * Object detected using only OpenCV is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
 * TensorFlow is optimal at **training** part i.e. at data handling(tensors) and OpenCV is optimal in **accessing and manipulating** data (resize, crop, webcams etc.,). 
