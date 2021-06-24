@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 from src.detection_tensorflow_framework.core.detect_object_in_frame import get_detection_details
 
 
@@ -48,10 +49,12 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
                                                                          iou,
                                                                          score)
 
-    print(boxes)
-    # (centerX, centerY, width, height) = boxes
-    # centroids = (centerX, centerY)
-    # print(centroids)
+    # print(boxes) (1, 50, 4)
+    box = boxes[0][:][0:4]
+    # print(box)
+    (centerX, centerY, width, height) = box
+    centroids = [(centerX, centerY)]
+    print(centroids)
     # Format Results
     formatted_boundary_boxes = format_boundary_box(original_image, boxes)
 
