@@ -6,11 +6,13 @@ def get_detection_details(frame, each_layer_output, minimum_confidence_score, la
     boxes = []
     centroids = []
     (H, W) = frame.shape[:2]
-    print(np.shape(each_layer_output))
+    print(np.shape(each_layer_output))  # List of 3 elements (3,)
     for output in each_layer_output:
-        print(np.shape(output))
+        print(np.shape(output))  # [(507, 85), (2028, 85), (8112, 85)]
+        # print(output[1])  # Each element with 85 values
         # loop over detections
         for detection in output:
+            # print(np.shape(detection))
             scores = detection[5:]
             # Step 1: Extract the class ID
             classID = np.argmax(scores)
@@ -37,7 +39,7 @@ def get_detection_details(frame, each_layer_output, minimum_confidence_score, la
                 boxes.append([x, y, int(width), int(height)])
                 centroids.append((centerX, centerY))
 
-    # print("get_detection_details", confidences)
+    print("get_detection_details", confidences)
     # print("get_detection_details", boxes)
     # print("get_detection_details", centroids)
     return confidences, boxes, centroids
