@@ -119,5 +119,5 @@ if __name__ == '__main__':
     except SystemExit:
         pass
 
-# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg
+# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/image.jpg
 # python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/car2.jpg --plate

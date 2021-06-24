@@ -48,6 +48,10 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
                                                                          iou,
                                                                          score)
 
+    print(boxes)
+    # (centerX, centerY, width, height) = boxes
+    # centroids = (centerX, centerY)
+    # print(centroids)
     # Format Results
     formatted_boundary_boxes = format_boundary_box(original_image, boxes)
 
