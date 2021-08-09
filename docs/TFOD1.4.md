@@ -9,7 +9,7 @@
     pip install pillow lxml Cython contextlib2 jupyter matplotlib pandas opencv-python tensorflow==1.14.0
     ```
 2. Framework and Model setup
-  - [Downlaod Framework Repository](https://github.com/tensorflow/models/tree/v1.13.0)
+  - [Download Framework Repository](https://github.com/tensorflow/models/tree/v1.13.0)
     - provides models/models/**research** directory
   - [Download Utils](https://drive.google.com/file/d/12F5oGAuQg7qBM_267TCMt_rlorV-M7gf/view)
   - [Select and Download a Pre Trained Model from Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md)
