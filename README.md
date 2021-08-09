@@ -1,6 +1,13 @@
-# YoloV4_Detect_Social_Distance_Violations
-* [Overview](#overview)
+# Detect Social Distance Violations
+
+# Overview
+* Step 1: Distance Calculation based on Centroids returned by the model
+* Step 2. Compute the Euclidean distances between "All pairs" of the centroids
+* Step 3: Compare calculated distance with the Minimum distance to be flagged as Violation
+
+## Sections
 * [Project Setup](#project-setup)
+* [Object Detection](https://github.com/sbhrwl/computer_vision/blob/main/docs/Object_Detection.md)
 * [OpenCV DNN](#opencv-dnn)
 * [Tensorflow](#tensorflow)
   * [OpenCV with tensorflow](#opencv-with-tensorflow)
@@ -11,11 +18,6 @@
     * [License Plate](#license-plate)
     * [Commands](#commands)
 * [Conclusion](#conclusion)
-
-# Overview
-* Step 1: Distance Calculation based on Centroids returned by the model
-* Step 2. Compute the Euclidean distances between "All pairs" of the centroids
-* Step 3: Compare calculated distance with the Minimum distance to be flagged as Violation
 
 ## Project Setup 
 * Create environment
