@@ -7,7 +7,6 @@
 
 ## Sections
 * [Project Setup](#project-setup)
-* [Object Detection](https://github.com/sbhrwl/computer_vision/blob/main/docs/Object_Detection.md)
 * [OpenCV DNN](#opencv-dnn)
 * [Tensorflow](#tensorflow)
   * [OpenCV with tensorflow](#opencv-with-tensorflow)
