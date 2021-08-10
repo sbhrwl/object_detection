@@ -1,4 +1,10 @@
 ## Custom Functions
+* [Crop](#crop)
+* [OCR](#ocr)
+* [Count Objects of a class](#count-objects-of-a-class)
+* [License Plate](#license-plate)
+* [Commands](#commands)
+
 ### Crop
 * We already have information of **Boundary box** for the detection
 * Crop the image using the coordinates of the Boundary Box
