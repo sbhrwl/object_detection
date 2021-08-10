@@ -120,3 +120,6 @@ python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --
 python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/car2.jpg --plate
 python detect_video.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --video ./data/video/license_plate.mp4 --output ./detections/recognition.avi --plate
 ```
+## References
+* [OpenCV](https://towardsdatascience.com/yolo-object-detection-with-opencv-and-python-21e50ac599e9 "OpenCV")
+* [Custom Functions](https://github.com/theAIGuysCode/yolov4-custom-functions)
