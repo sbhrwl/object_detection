@@ -80,6 +80,48 @@ Same as above process, except that we process for each frame
         write_and_save_video(output_frame)
 ```
 
+## Non Max Suppression Comparison
+### [DNN](https://github.com/sbhrwl/social_distance_violations/blob/ce5bd02ce6fd4452752d0b2fe2ce13dcb869a5ef/src/detection_opencv_dnn/core/object_detection.py#L26)
+```
+def apply_non_maxima_suppression(boxes, confidences, minimum_confidence, nms_threshold):
+    indexes = cv2.dnn.NMSBoxes(boxes, confidences, minimum_confidence, nms_threshold)
+    return indexes
+    
+indexes = apply_non_maxima_suppression(boxes, confidences, minimum_confidence_score, nms_threshold_value)
+
+# Format Results
+# i. Confidence score/Predicted Probability
+# ii. Bounding box coordinates
+# iii. Centroid
+results = []
+if len(indexes) > 0:
+    for i in indexes.flatten():
+        # Step 1: Extract bounding box coordinates
+        (x, y) = (boxes[i][0], boxes[i][1])
+        (w, h) = (boxes[i][2], boxes[i][3])
+
+        # Step 2: Rewrite Bounding box coordinates
+        # a. Add Width to X coordinate
+        # b. Add Height to Y coordinate
+        r = (confidences[i], (x, y, x + w, y + h), centroids[i])
+        results.append(r)
+```
+### [Tensorflow](https://github.com/sbhrwl/social_distance_violations/blob/ce5bd02ce6fd4452752d0b2fe2ce13dcb869a5ef/src/detection_tensorflow_framework/core/object_detection.py#L44)
+```
+def apply_non_max_suppression(boxes, confidence_score, iou, score):
+    boxes, scores, classes, valid_detections = tf.image.combined_non_max_suppression(
+        boxes=tf.reshape(boxes, (tf.shape(boxes)[0], -1, 1, 4)),
+        scores=tf.reshape(confidence_score,
+                          (tf.shape(confidence_score)[0], -1, tf.shape(confidence_score)[-1])),
+        max_output_size_per_class=50,
+        max_total_size=50,
+        iou_threshold=iou,
+        score_threshold=score
+    )
+
+    return boxes, scores, classes, valid_detections
+```
+
 ## Conclusion
 * Object detected using **only OpenCV** is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
 * TensorFlow is optimal at **training** part i.e. at data handling(tensors) and OpenCV is optimal in **accessing and manipulating** data (resize, crop, webcams etc.,). 
