@@ -55,6 +55,12 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
     (centerX, centerY, width, height) = box
     centroids = (centerX, centerY)
     print("centroids", centroids)
+    # for dog image, centroids(
+    # < tf.Tensor: shape = (4,), dtype = float32, numpy = array([0.2265983, 0.16642648, 0.7382985, 0.7395106],
+    #                                                                      dtype=float32) >,
+    # < tf.Tensor: shape = (4,), dtype = float32, numpy = array([0.40329865, 0.17203887, 0.93382734, 0.4067322],
+    #                                                                      dtype=float32) >)
+
     # Format Results
     formatted_boundary_boxes = format_boundary_box(original_image, boxes)
 
