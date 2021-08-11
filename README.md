@@ -42,6 +42,15 @@
 * Step 6: Show Image
 * Step 7: Save Detections
 
+### Convert the .weights into the corresponding TensorFlow model files
+```
+python src/detection_tensorflow_framework/save_model.py --weights ./data/yolov4.weights --output artifacts/checkpoints/yolov4-416 --input_size 416 --model yolov4 
+```
+This will create below files:
+- checkpoints/yolov4-416/**saved_model.pb**
+- checkpoints/yolov4-416/**keras_metadata.pb**
+- checkpoints/yolov4-416/**variables**
+
 ### Detect_object method
 #### Input Arguments
 * Yolov4 Tensorflow formatted model
