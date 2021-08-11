@@ -1,52 +1,57 @@
+from src.detection_tensorflow_framework.core.config import cfg
 from src.detection_tensorflow_framework.core.read_image import load_model, load_image
 from src.detection_tensorflow_framework.core.object_detection import get_detection_results
 import core.utils as utils
 from core.functions import *
 import numpy as np
 from PIL import Image
+
+# This might be doing something, don't know yet
 import tensorflow as tf
 import os
 # comment out below line to enable tensorflow outputs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
 from tensorflow.compat.v1 import ConfigProto
 # from tensorflow.compat.v1 import InteractiveSession
+
+
 from absl import app, flags
 from absl.flags import FLAGS
-
-flags.DEFINE_string('weights', './checkpoints/yolov4-416', 'path to weights file')
-flags.DEFINE_integer('size', 416, 'resize images to')
+flags.DEFINE_string('weights', './artifacts/checkpoints/yolov4-416', 'path to weights file')
 flags.DEFINE_string('model', 'yolov4', 'yolov3 or yolov4')
 flags.DEFINE_list('images', './data/images/kite.jpg', 'path to input image')
 flags.DEFINE_float('iou', 0.45, 'iou threshold')
 flags.DEFINE_float('score', 0.50, 'score threshold')
+flags.DEFINE_string('output', './artifacts/detections/', 'path to output folder')
+flags.DEFINE_integer('size', 416, 'resize images to')
 
-flags.DEFINE_boolean('tiny', False, 'yolo or yolo-tiny')
-flags.DEFINE_string('output', './detections/', 'path to output folder')
-flags.DEFINE_boolean('dont_show', False, 'dont show image output')
 flags.DEFINE_boolean('info', False, 'print info on detections')
 flags.DEFINE_boolean('count', False, 'count objects within images')
 flags.DEFINE_boolean('crop', False, 'crop detections from images')
 flags.DEFINE_boolean('ocr', False, 'perform generic OCR on detection regions')
 flags.DEFINE_boolean('plate', False, 'perform license plate recognition')
+flags.DEFINE_boolean('tiny', False, 'yolo or yolo-tiny')
+flags.DEFINE_boolean('dont_show', False, 'dont show image output')
 
 
 def main(_argv):
-    config = ConfigProto()
-    config.gpu_options.allow_growth = True
+    # config = ConfigProto()
+    # config.gpu_options.allow_growth = True
     # session = InteractiveSession(config=config)
     # STRIDES, ANCHORS, NUM_CLASS, XYSCALE = utils.load_config(FLAGS)
+
+    # i. Define flags with lower case "flags"
+    # ii. Access defined flags with upper case "FLAGS"
     input_size = FLAGS.size
     images = FLAGS.images
 
     # Step 1: Load model
     yolo_v4_model = load_model(FLAGS.weights)
 
-    # loop through images in list and run Yolov4 model on each
+    # loop through images in list and run Yolo V4 model on each
     for count, image_path in enumerate(images, 1):
         # Step 2: Read Image
         original_image, image_data, image_name = load_image(image_path, input_size)
@@ -118,6 +123,3 @@ if __name__ == '__main__':
         app.run(main)
     except SystemExit:
         pass
-
-# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/image.jpg
-# python src/detection_tensorflow_framework/detect_image.py --weights ./artifacts/checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/car2.jpg --plate
