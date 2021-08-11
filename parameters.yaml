@@ -1,6 +1,6 @@
 base:
   project_name: Social Distance Violation
-
+  # set PYTHONPATH=%PYTHONPATH%;C:\project\ObjectDetection
 input_config:
   image_location: data/images/image.jpg
   video_location: data/video/test.mp4
