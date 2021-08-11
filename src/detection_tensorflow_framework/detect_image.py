@@ -22,7 +22,7 @@ from absl import app, flags
 from absl.flags import FLAGS
 flags.DEFINE_string('weights', './artifacts/checkpoints/yolov4-416', 'path to weights file')
 flags.DEFINE_string('model', 'yolov4', 'yolov3 or yolov4')
-flags.DEFINE_list('images', './data/images/kite.jpg', 'path to input image')
+flags.DEFINE_list('images', './data/images/dog.jpg', 'path to input image')
 flags.DEFINE_float('iou', 0.45, 'iou threshold')
 flags.DEFINE_float('score', 0.50, 'score threshold')
 flags.DEFINE_string('output', './artifacts/detections/', 'path to output folder')
@@ -63,7 +63,10 @@ def main(_argv):
         images_data = np.asarray(images_data).astype(np.float32)
 
         # Step 3: Get Detection Results
-        detection_results = get_detection_results(yolo_v4_model, images_data, FLAGS.iou, FLAGS.score, original_image)
+        centroids, detection_results = get_detection_results(yolo_v4_model,
+                                                             images_data,
+                                                             FLAGS.iou, FLAGS.score,
+                                                             original_image)
 
         # Step 4: Classes to show as Detection
         class_names = utils.read_class_names(cfg.YOLO.CLASSES)
@@ -107,7 +110,12 @@ def main(_argv):
                                     FLAGS.info,
                                     allowed_classes=allowed_classes,
                                     read_plate=FLAGS.plate)
-
+            # Draw Centroid of an Image
+            # (cX, cY) = centroids
+            # print("Circle", cX)
+            # print("Circle", cY)
+            # color = (0, 255, 0)
+            # cv2.circle(original_image, (cX, cY), 5, color, 1)
         # Step 6: Show Image
         image = Image.fromarray(image.astype(np.uint8))
         if not FLAGS.dont_show:

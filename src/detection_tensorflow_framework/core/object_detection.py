@@ -27,11 +27,11 @@ def apply_non_max_suppression(boxes, confidence_score, iou, score):
 
 def format_boxes(boxes, image_height, image_width):
     for box in boxes:
-        ymin = int(box[0] * image_height)
-        xmin = int(box[1] * image_width)
-        ymax = int(box[2] * image_height)
-        xmax = int(box[3] * image_width)
-        box[0], box[1], box[2], box[3] = xmin, ymin, xmax, ymax
+        y_min = int(box[0] * image_height)
+        x_min = int(box[1] * image_width)
+        y_max = int(box[2] * image_height)
+        x_max = int(box[3] * image_width)
+        box[0], box[1], box[2], box[3] = x_min, y_min, x_max, y_max
     return boxes
 
 
@@ -53,12 +53,12 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
     box = boxes[0][:][0:4]
     # print(box)
     (centerX, centerY, width, height) = box
-    centroids = [(centerX, centerY)]
-    print(centroids)
+    centroids = (centerX, centerY)
+    print("centroids", centroids)
     # Format Results
     formatted_boundary_boxes = format_boundary_box(original_image, boxes)
 
     detection_details = [formatted_boundary_boxes, scores.numpy()[0], classes.numpy()[0],
                          valid_detections.numpy()[0]]
 
-    return detection_details
+    return centroids, detection_details
