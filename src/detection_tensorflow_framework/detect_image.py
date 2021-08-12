@@ -65,10 +65,10 @@ def main(_argv):
         images_data = np.asarray(images_data).astype(np.float32)
 
         # Step 3: Get Detection Results
-        centroids, detection_results = get_detection_results(yolo_v4_model,
-                                                             images_data,
-                                                             FLAGS.iou, FLAGS.score,
-                                                             original_image)
+        detection_results = get_detection_results(yolo_v4_model,
+                                                  images_data,
+                                                  FLAGS.iou, FLAGS.score,
+                                                  original_image)
 
         # Step 4: Classes to show as Detection
         class_names = utils.read_class_names(cfg.YOLO.CLASSES)
@@ -112,13 +112,7 @@ def main(_argv):
                                     FLAGS.info,
                                     allowed_classes=allowed_classes,
                                     read_plate=FLAGS.plate)
-            # Draw Centroid of an Image
-            # (cX, cY) = centroids
-            # print("Circle", cX)
-            # print("Circle", cY)
-            # color = (0, 255, 0)
-            # cv2.circle(original_image, (cX, cY), 5, color, 1)
-            # https://favtutor.com/blog-details/social-distancing-tool-using-tensorflow
+
         # Step 6: Show Image
         image = Image.fromarray(image.astype(np.uint8))
         if not FLAGS.dont_show:
