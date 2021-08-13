@@ -6,7 +6,7 @@ input_config:
   video_location: data/video/test.mp4
 
 yolo_config:
-  model_directory: artifacts/yolo_trained_model_artifacts
+  model_directory: data/dnn
   config_file: yolov3.cfg
   weights_file: yolov3.weights
   labels_file: coco.names
