@@ -25,7 +25,7 @@ if __name__ == '__main__':
                                               person_index
                                               )
     # print(detection_results)
-    # (0.998525857925415, (377, 179, 557, 736), (467, 458))
+    # [(0.998525857925415, (377, 179, 557, 736), (467, 458))]
     # Confidence Score, Bounding Box coordinates (x1, y1, x2, y2), Centroid
 
     # Step 4: Detect Violations
