@@ -51,8 +51,8 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
 
     # Format Results
     formatted_boundary_boxes = format_boundary_box(original_image, boxes)
-    # print("scores:-", scores)
-    # print("scores.numpy()[0]:-", scores.numpy()[0])
+    # print("formatted_boundary_boxes:-", formatted_boundary_boxes)
+    # print("formatted_boundary_boxes as array:-", [formatted_boundary_boxes])
     detection_details = [formatted_boundary_boxes,
                          scores.numpy()[0],
                          classes.numpy()[0],
