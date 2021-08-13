@@ -54,12 +54,6 @@ def get_detection_results(yolo_v4_model, images_data, iou, score, original_image
     # print("formatted_boundary_boxes:-", formatted_boundary_boxes)
     # print("formatted_boundary_boxes as array:-", [formatted_boundary_boxes])
 
-    centroids = []
-    for i in range(valid_detections.numpy()[0]):
-        coordinates = formatted_boundary_boxes[i][0], formatted_boundary_boxes[i][1]
-        centroids.append(coordinates)
-    print(centroids)
-
     detection_details = [formatted_boundary_boxes,
                          scores.numpy()[0],
                          classes.numpy()[0],
