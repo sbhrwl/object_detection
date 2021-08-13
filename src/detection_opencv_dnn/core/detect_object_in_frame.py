@@ -39,7 +39,7 @@ def get_detection_details(frame, each_layer_output, minimum_confidence_score, la
                 boxes.append([x, y, int(width), int(height)])
                 centroids.append((centerX, centerY))
 
-    print("get_detection_details", confidences)
+    # print("get_detection_details", confidences)
     # print("get_detection_details", boxes)
     # print("get_detection_details", centroids)
     return confidences, boxes, centroids
