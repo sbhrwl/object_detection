@@ -10,7 +10,7 @@ Classification -> OD -> Segementation -> Tracking
 ## Output from an Object Detection Framework
 - Class of Object
 - Confidence Score
-- Bounding Box/Anchor Box ((x, y), l, w)
+- Bounding Box/Anchor Box ((x, y), l, w) or (Xmin, Ymin, Xmax, Ymax)
   - How to build a Rectangle
     - Center of Rectangle (x, y)
     - Length of Rectangle (l)
@@ -50,3 +50,8 @@ Classification -> OD -> Segementation -> Tracking
 - Input Image (RGB) is converted to numpy matrix
 - As Numpy matrix is not **GPU** compatible, so Numpy Matrix is converted to a **TENSOR** ex: [[R][G][B]]
 - Tensor is GPU compatible
+
+- Numpy array: [1,2,3,4] dtype=vector
+- Tensor: [1,2,3,4] dtype=tensor
+- [Inference code](https://colab.research.google.com/drive/175z_auclmIs_flCjhmp1msNIaLMGZzKN?usp=sharing) [walkthrough](https://www.youtube.com/watch?v=uyFKkqHaX8g&t=8s)- 01:40:00
+- [Tasks](https://forms.office.com/pages/responsepage.aspx?id=T8AYy3GTMECkvj1F_-cJ7OTkCe-r2slCpSR8nE7buK1UN0lFV0NOSVY5WTg1OTVNSDJFT0lFWk02My4u)
