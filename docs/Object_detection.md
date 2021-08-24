@@ -1,6 +1,12 @@
 # Computer Vision
 Classification -> OD -> Segementation -> Tracking
 
+- [Output from an Object Detection Framework](#output-from-an-object-detection-framework)
+- [Object Detection Frameworks](#object-detection-frameworks)
+- [Model Zoo](#model-zoo)
+- [Metrics](#metrics)
+- [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
+
 ## Output from an Object Detection Framework
 - Class of Object
 - Confidence Score
@@ -11,7 +17,7 @@ Classification -> OD -> Segementation -> Tracking
     - Width of Rectangle (w)
 - Number of Instances   
 
-## Object Detection Framework
+## Object Detection Frameworks
 - [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD1.4.md)
 - [TFOD2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD2.md)
 - Detectron
@@ -40,3 +46,7 @@ Classification -> OD -> Segementation -> Tracking
   - if mAP is higher, speed will be lower
   - if speed is higher, mAP will be lower
 
+## Numpy Matrix and Tensors
+- Input Image (RGB) is converted to numpy matrix
+- As Numpy matrix is not **GPU** compatible, so Numpy Matrix is converted to a **TENSOR** ex: [[R][G][B]]
+- Tensor is GPU compatible
