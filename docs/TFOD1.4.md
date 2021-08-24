@@ -6,6 +6,7 @@
 - [Changes for model configuration file](#changes-for-model-configuration-file)
 - [Start training](#start-training)
 - [Convert Checkpoints to Frozen Inference Graph](#convert-checkpoints-to-frozen-inference-graph)
+- [Inference via model](#inference-via-model)
 
 # [Setup Tf14 environment](https://pastebin.com/YDgbqzTx)
 1. Create Conda environment and install libraries
@@ -138,3 +139,7 @@ Replace the XXXX with the last generated ckpt file inside the training folder
    python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-1000 --output_directory inference_graph
    ```
 - Verify Created model at /research/mask_model **frozen_inference_graph.pb**
+
+## [Inference via model](https://colab.research.google.com/drive/175z_auclmIs_flCjhmp1msNIaLMGZzKN?usp=sharing)
+- Load (frozen) Tensorflow model into memory
+- Load label map
