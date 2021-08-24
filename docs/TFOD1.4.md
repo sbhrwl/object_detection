@@ -1,4 +1,13 @@
-# [Setup Tf1.4 environment](https://pastebin.com/YDgbqzTx)
+# TFOD1.4
+- [Setup Tf1.4 environment](#setup-tf14-environment)
+    - [Opening Camera for Object Detection on local setup](#opening-camera-for-object-detection-on-local-setup)
+    - [Annotation Tools](#annotation-tools)
+- [Formatting annotated files](#formatting-annotated-files)
+- [Changes for model configuration file](#changes-for-model-configuration-file)
+- [Start training](#start-training)
+- [Convert Checkpoints to Frozen Inference Graph](#convert-checkpoints-to-frozen-inference-graph)
+
+# [Setup Tf14 environment](https://pastebin.com/YDgbqzTx)
 1. Create Conda environment and install libraries
     ```
     # Creating virtual env using conda
@@ -88,8 +97,8 @@
 - Prodigy ($)
 - VOTT
 
-## Formatting annotations files
-As labelimg annotations are in **XML** format and tensor flow object detection frameworks requires annotations to be in **.record** format, we follow below steps fot annotaions generated via Labelimg
+## Formatting annotated files
+As labelimg annotations are in **XML** format and tensor flow object detection frameworks requires annotations to be in **.record** format, we follow below steps fot annotations generated via Labelimg
 1. Execute script **xml_to_csv**
     - Copy the file **xml_to_csv** from utils folder to models repo in reaserch folder 
        ```
@@ -102,13 +111,30 @@ As labelimg annotations are in **XML** format and tensor flow object detection f
        python generate_tfrecord.py --csv_input=images/test_labels.csv --image_dir=images/test --output_path=test.record
        ```
 
-## [Mask Detection](https://colab.research.google.com/drive/1Z-XfUVA6Aj9VT3f7CiPCL_9mqz8aXTs8?usp=sharing)
-1. Copy the file **train.py** from legacy folder in object_detection to research, Run below command from research folder
-   ```
-   python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_coco.config
-   ```
-9. Exporting Inference Graph
-   - Replace the XXXX with the last generated ckpt file inside the training folder
+## Changes for model configuration file
+1. num_classes: 90 to 2
+2. fine_tune_checkpoint (line-107): "PATH_TO_BE_CONFIGURED/model.ckpt" to faster_rcnn/model.ckpt
+3. num_steps (line-113): 200000 To 1000
+4. Location of Train files
+   - train.record (line-122): "input_path": "PATH_TO_BE_CONFIGURED/mscoco_train.record-?????" to train.record
+   - label_map_path (line-124): "PATH_TO_BE_CONFIGURED/mscoco_label_map.pbtxt-?????" to training/lablemap.pbtxt
+5. Location of Test files
+   - test.record (line-136): "input_path": "PATH_TO_BE_CONFIGURED/mscoco_train.record-?????" to test.record
+   - label_map_path (line-138): "PATH_TO_BE_CONFIGURED/mscoco_label_map.pbtxt-?????" to training/lablemap.pbtxt
+  
+## Start training
+- [Mask Detection](https://colab.research.google.com/drive/1Z-XfUVA6Aj9VT3f7CiPCL_9mqz8aXTs8?usp=sharing)
+- Copy the file **train.py** from legacy folder in object_detection to research, Run below command from research folder
+    ```
+    python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_coco.config
+    ```
+- If training fails, 
+    - Copy "deployment" and "net" folder from "research/slim"
+    - Paste them to **research**
+
+## Convert Checkpoints to Frozen Inference Graph
+Replace the XXXX with the last generated ckpt file inside the training folder
    ```
    python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-1000 --output_directory inference_graph
    ```
+- Verify Created model at /research/mask_model **frozen_inference_graph.pb**
