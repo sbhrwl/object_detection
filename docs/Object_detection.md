@@ -12,8 +12,8 @@ Classification -> OD -> Segementation -> Tracking
 - Number of Instances   
 
 ## Object Detection Framework
-- [Tf1_OD](https://github.com/tensorflow/models/tree/v1.13.0/research/object_detection)
-- Tf2_OD
+- [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD1.4.md)
+- TFOD2
 - Detectron
 - Yolo
 
