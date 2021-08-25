@@ -20,7 +20,7 @@ Classification -> OD -> Segementation -> Tracking
 ## Object Detection Frameworks
 - [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD1.4.md)
 - [TFOD2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD2.md)
-- Detectron
+- [Detectron2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/Detectron2.md)
 - Yolo
 
 
