@@ -6,6 +6,7 @@ Classification -> OD -> Segementation -> Tracking
 - [Model Zoo](#model-zoo)
 - [Metrics](#metrics)
 - [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
+- [Building an Object Detection solution](#building-an-object-detection-solution)
 
 ## Output from an Object Detection Framework
 - Class of Object
@@ -67,3 +68,15 @@ High level framworks are built on top of low level frameworks
 - Tensor: [1,2,3,4] dtype=tensor
 - [Inference code](https://colab.research.google.com/drive/175z_auclmIs_flCjhmp1msNIaLMGZzKN?usp=sharing) [walkthrough](https://www.youtube.com/watch?v=uyFKkqHaX8g&t=8s)- 01:40:00
 - [Tasks](https://forms.office.com/pages/responsepage.aspx?id=T8AYy3GTMECkvj1F_-cJ7OTkCe-r2slCpSR8nE7buK1UN0lFV0NOSVY5WTg1OTVNSDJFT0lFWk02My4u)
+
+## Building an Object Detection solution
+- Framework
+- Volume of Data
+- mAP per class
+- FPS based on micro controller, PCs, GPU accelerated PCs
+- Model Selection and why?
+  - SSD
+  - CenterNet
+  - Faster RCNN, RetinaNet basedmodel
+- What kind of camera was used
+- Distance from Camera
