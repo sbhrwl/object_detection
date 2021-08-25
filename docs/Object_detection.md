@@ -18,11 +18,23 @@ Classification -> OD -> Segementation -> Tracking
 - Number of Instances   
 
 ## Object Detection Frameworks
+### Low level frameworks
+- Tensorflow
+- Pytorch
+- MxNet
+
+### High Level frameworks
+High level framworks are built on top of low level frameworks
 - [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD1.4.md)
 - [TFOD2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD2.md)
 - [Detectron2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/Detectron2.md)
 - Yolo
+  - Yolo is based on Darknet
 
+| Tensorflow | Pytorch | MxNet |
+| ---------- | ------- | ----- |
+| TFOD v1 | Detectron2  | GluonCV | 
+| TFOD v2 | Pytorch lightening  |  | 
 
 ## [Model Zoo](https://github.com/tensorflow/models/blob/v1.13.0/research/object_detection/g3doc/detection_model_zoo.md)
 - Detection Model
