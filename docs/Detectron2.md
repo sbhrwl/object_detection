@@ -112,3 +112,10 @@
       | nine       | 81.029 | queen      | 62.158 | ten        | 70.954 |
       OrderedDict([('bbox', {'AP': 69.20630335401063, 'AP50': 82.57996307033767, 'AP75': 82.11883463076639, 'APs': nan, 'APm': 68.13414793860338, 'APl': 70.11922372310204, 'AP-ace': 83.41881645075392, 'AP-jack': 53.23562401798234, 'AP-king': 64.44154752427788, 'AP-nine': 81.02925635716204, 'AP-queen': 62.15809209588659, 'AP-ten': 70.95448367800098})])
       ```
+
+- Creating Annotation files
+  - How to create output.json used in card dataset example
+  - As output of annotation for the card dataset is in Pascal VOC fromat, so run [script](https://drive.google.com/file/d/1VhxcxEKeMyzNhVay_Ln8mq_YJhBAhfv6/view?usp=sharing) **voc2coco.py**
+    ```
+    python voc2coco.py train_annotations_locations output_file.json
+    ```
