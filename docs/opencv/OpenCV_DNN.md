@@ -121,8 +121,15 @@ def apply_non_max_suppression(boxes, confidence_score, iou, score):
 
     return boxes, scores, classes, valid_detections
 ```
+### Advantages of Tensorflow over OpenCV DNN
+* OpenCV offers **GPU module**
+* You will be the one to pick which classes and methods to use so at least **some knowledge about GPU programming** will be helpful. 
+* In Tensorflow, you can **easily** use the GPU implementation by setting the number of GPUs you have or if you want to use both
 
 ## Conclusion
 * Object detected using **only OpenCV** is not optimal and using TensorFlow as a framework gives you more options to explore like networks, algorithms. 
 * TensorFlow is optimal at **training** part i.e. at data handling(tensors) and OpenCV is optimal in **accessing and manipulating** data (resize, crop, webcams etc.,). 
 * Thus, both are used together for object detection
+
+## References
+* [OpenCV](https://towardsdatascience.com/yolo-object-detection-with-opencv-and-python-21e50ac599e9 "OpenCV")
