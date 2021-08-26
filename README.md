@@ -24,11 +24,6 @@
 * Deep leaning algorithms will take a long time to finish and that’s where the use of **GPUs** come in because they provide better processing speed compared to CPUs. 
 * The flexible architecture of TensorFlow allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API
 
-### Advantages of Tensorflow over OpenCV DNN
-* OpenCV offers **GPU module**
-* You will be the one to pick which classes and methods to use so at least **some knowledge about GPU programming** will be helpful. 
-* In Tensorflow, you can **easily** use the GPU implementation by setting the number of GPUs you have or if you want to use both
-
 ### General Approach for Object Detection
 * Step 1: Load model
 * Step 2: Read Image
@@ -101,6 +96,3 @@ Out of all the detections, consider only those detections which conforms to
 * Confidence Score
 * Detected Classes
 * Number of Objects
-
-## References
-* [OpenCV](https://towardsdatascience.com/yolo-object-detection-with-opencv-and-python-21e50ac599e9 "OpenCV")
