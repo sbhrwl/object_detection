@@ -2,7 +2,7 @@ import cv2
 
 cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('../artifacts/output.avi', fourcc, 20.0, (640, 480))
+out = cv2.VideoWriter('artifacts/detections/output.avi', fourcc, 20.0, (640, 480))
 
 print(cap.isOpened())
 while cap.isOpened():

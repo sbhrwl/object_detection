@@ -29,7 +29,7 @@ def click_event(event, x, y, flags, param):
 # Create image from numpy
 # img = np.zeros((512, 512, 3), np.uint8)
 
-img = cv2.imread('inputs/messi.jpg')
+img = cv2.imread('data/images/messi.jpg')
 img = cv2.resize(img, (512, 512))
 # 'image' is windows title
 cv2.imshow('image', img)

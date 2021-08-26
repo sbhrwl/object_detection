@@ -6,7 +6,7 @@ img1 = np.zeros((250, 500, 3), np.uint8)
 # Draw white rectangle in above black image
 img1 = cv2.rectangle(img1,(200, 0), (300, 100), (255, 255, 255), -1)  # -1 means rectangle is filled with white color
 
-img2 = cv2.imread("inputs/image_half_black.png")
+img2 = cv2.imread("data/images/image_half_black.png")
 print("Shape of Image: ", img2.shape)
 img2 = cv2.resize(img2, (500, 250))
 

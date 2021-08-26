@@ -7,7 +7,7 @@ import cv2
 # cv2.split(img) - output vector of arrays; the arrays themselves are reallocated, if needed.
 # cv2.merge((b,g,r)) - The number of channels will be the total number of channels in the matrix array.
 
-img = cv2.imread('inputs/messi.jpg')
+img = cv2.imread('data/images/messi.jpg')
 print("Shape of Image: ", img.shape)
 print("Size of Image: ", img.size)
 print("dtype of Image: ", img.dtype)

@@ -24,7 +24,7 @@ def click_event(event, x, y, flags, param):
 
 points = []  # used in above callback function
 
-img = cv2.imread('inputs/image.png')
+img = cv2.imread('data/images/image.png')
 # 'image' is windows title
 cv2.imshow('image', img)
 

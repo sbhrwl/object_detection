@@ -3,7 +3,7 @@ import numpy as np
 
 if __name__ == '__main__':
     print(cv2.__version__)
-    # img = cv2.imread('inputs/image.png', 1)
+    # img = cv2.imread('data/images/image.png', 1)
     # Create own image using numpy
     img = np.zeros([512, 512, 3], np.uint8)
 
