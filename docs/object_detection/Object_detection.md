@@ -26,9 +26,9 @@ Classification -> OD -> Segementation -> Tracking
 
 ### High Level frameworks
 High level framworks are built on top of low level frameworks
-- [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD1.4.md)
-- [TFOD2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/TFOD2.md)
-- [Detectron2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/Detectron2.md)
+- [TFOD1](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/TFOD1.4.md)
+- [TFOD2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/TFOD2.md)
+- [Detectron2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/Detectron2.md)
 - Yolo
   - Yolo is based on Darknet
 
