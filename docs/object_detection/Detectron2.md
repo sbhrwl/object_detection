@@ -9,7 +9,7 @@
       - Install dependencies, download the video, and crop 5 seconds for processing
         - Youtube downloader library: youtube-dl
       - Run frame-by-frame inference demo on this video
-- [Cards Dataset](https://drive.google.com/file/d/1hwXAfv2Li6v-bweJQuAQq-lSSKSt-PL3/view?usp=sharing)
+- [Cards Dataset](https://colab.research.google.com/drive/1M5rIbVt_ohJ5_npZWDd9kgv79jM0J5pM?usp=sharing)
   - Install detectron2
   - Register the dataset
     - customtrain is the name of experiment, this enables us to use dataset multiple times
