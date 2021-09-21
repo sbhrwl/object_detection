@@ -37,6 +37,7 @@ High level framworks are built on top of low level frameworks
 | ---------- | ------- | ----- |
 | TFOD v1 | Detectron2  | GluonCV | 
 | TFOD v2 | Pytorch lightening  |  | 
+| | Yolo  |  | 
 
 ## [Model Zoo](https://github.com/tensorflow/models/blob/v1.13.0/research/object_detection/g3doc/detection_model_zoo.md)
 - Detection Model
