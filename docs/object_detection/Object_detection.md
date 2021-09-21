@@ -32,6 +32,7 @@ High level framworks are built on top of low level frameworks
 - [Detectron2](https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/Detectron2.md)
 - [YoloV5](https://colab.research.google.com/drive/1MCLjg1ZPhzI9YSUseDBjCetrUEiwsu8y?usp=sharing)
   - Yolo is based on Darknet
+  - [Yolo](https://github.com/ultralytics/yolov5/issues/12)
 
 | Tensorflow | Pytorch | MxNet |
 | ---------- | ------- | ----- |
