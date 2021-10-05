@@ -1,5 +1,5 @@
 # Computer Vision
-Classification -> OD -> Segementation -> Tracking
+Classification -> **OD** -> Segementation -> Tracking
 
 - [Output from an Object Detection Framework](#output-from-an-object-detection-framework)
 - [Object Detection Frameworks](#object-detection-frameworks)
