@@ -13,6 +13,7 @@ Classification -> **OD** -> Segementation -> Tracking
 
 ## Object Detection architectures
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
+  - Since RCNN combines region proposals with CNNs, we call our method R-CNN: Regions with CNN features
   - **R-Region proposal** Convolution Neural Network
 - Fatser RCNN
 - Mask RCNN
