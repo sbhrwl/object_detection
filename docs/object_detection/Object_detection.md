@@ -2,9 +2,9 @@
 Classification -> **OD** -> Segementation -> Tracking
 
 - [Object Detection architectures](#object-detection-architectures)
+- [Object Detection Frameworks](#object-detection-frameworks)
 - [Output from an Object Detection Framework](#output-from-an-object-detection-framework)
 - [Approach for building object dectection solutions](#approach-for-building-object-dectection-solutions)
-- [Object Detection Frameworks](#object-detection-frameworks)
 - [Model Zoo](#model-zoo)
 - [Metrics](#metrics)
 - [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
@@ -19,27 +19,6 @@ Classification -> **OD** -> Segementation -> Tracking
 - Mask RCNN
 - SSD
 - paulbindass@gmail.com
-
-## Output from an Object Detection Framework
-- Class of Object
-- Confidence Score
-- Bounding Box/Anchor Box ((x, y), l, w) or (Xmin, Ymin, Xmax, Ymax)
-  - How to build a Rectangle
-    - Center of Rectangle (x, y)
-    - Length of Rectangle (l)
-    - Width of Rectangle (w)
-- Number of Instances   
-
-## Approach for building object dectection solutions
-- Choose an OD framework (TF/Detectron/Yolo)
-- Choose a low level framework (TF/Pytorch)
-- Choose an Object detection Architecture (RCNN/SSD)
-- Choose CNN network
-- Train your model using libraries provided by OD framework
-  - Classified Object 
-  - Confidence score
-  - BBox cordinates (2 edges (diagnal) or center with width and height)
-  - Number of Instances
 
 ## Object Detection Frameworks
 ### Low level frameworks
@@ -61,6 +40,27 @@ High level framworks are built on top of low level frameworks
 | TFOD v1 | Detectron2  | GluonCV | 
 | TFOD v2 | Pytorch lightening  |  | 
 | | Yolo  |  | 
+
+## Output from an Object Detection Framework
+- Class of Object
+- Confidence Score
+- Bounding Box/Anchor Box ((x, y), l, w) or (Xmin, Ymin, Xmax, Ymax)
+  - How to build a Rectangle
+    - Center of Rectangle (x, y)
+    - Length of Rectangle (l)
+    - Width of Rectangle (w)
+- Number of Instances   
+
+## Approach for building object dectection solutions
+- Choose an OD framework (TF/Detectron/Yolo)
+- Choose a low level framework (TF/Pytorch)
+- Choose an Object detection Architecture (RCNN/SSD)
+- Choose CNN network
+- Train your model using libraries provided by OD framework
+  - Classified Object 
+  - Confidence score
+  - BBox cordinates (2 edges (diagnal) or center with width and height)
+  - Number of Instances
 
 ## [Model Zoo](https://github.com/tensorflow/models/blob/v1.13.0/research/object_detection/g3doc/detection_model_zoo.md)
 - Detection Model
