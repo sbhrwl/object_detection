@@ -13,6 +13,9 @@ Classification -> **OD** -> Segementation -> Tracking
 
 ## Object Detection architectures
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
+- Fatser RCNN
+- Mask RCNN
+- SSD
 - paulbindass@gmail.com
 
 ## Output from an Object Detection Framework
