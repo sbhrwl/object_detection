@@ -13,6 +13,7 @@ Classification -> **OD** -> Segementation -> Tracking
 
 ## Object Detection architectures
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
+  - **R-Region proposal** Convolution Neural Network
 - Fatser RCNN
 - Mask RCNN
 - SSD
