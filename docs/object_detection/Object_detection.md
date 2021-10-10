@@ -1,13 +1,19 @@
 # Computer Vision
 Classification -> **OD** -> Segementation -> Tracking
 
+- [Object Detection architectures](#object-detection-architectures)
 - [Output from an Object Detection Framework](#output-from-an-object-detection-framework)
+- [Approach for building object dectection solutions](#approach-for-building-object-dectection-solutions)
 - [Object Detection Frameworks](#object-detection-frameworks)
 - [Model Zoo](#model-zoo)
 - [Metrics](#metrics)
 - [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
 - [Building an Object Detection solution](#building-an-object-detection-solution)
 - [References](#references)
+
+## Object Detection architectures
+- [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
+- paulbindass@gmail.com
 
 ## Output from an Object Detection Framework
 - Class of Object
@@ -18,6 +24,17 @@ Classification -> **OD** -> Segementation -> Tracking
     - Length of Rectangle (l)
     - Width of Rectangle (w)
 - Number of Instances   
+
+## Approach for building object dectection solutions
+- Choose an OD framework (TF/Detectron/Yolo)
+- Choose a low level framework (TF/Pytorch)
+- Choose an Object detection Architecture (RCNN/SSD)
+- Choose CNN network
+- Train your model using libraries provided by OD framework
+  - Classified Object 
+  - Confidence score
+  - BBox cordinates (2 edges (diagnal) or center with width and height)
+  - Number of Instances
 
 ## Object Detection Frameworks
 ### Low level frameworks
