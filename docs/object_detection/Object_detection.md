@@ -20,6 +20,7 @@ Classification -> **OD** -> Segementation -> Tracking
 - Mask RCNN
 - SSD
 - paulbindass@gmail.com/sunny@ineuron.ai/query@ineuron.ai
+<img src='https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/object_detection_architectures.jpg'>
 
 ## Object Detection Frameworks
 ### Low level frameworks
