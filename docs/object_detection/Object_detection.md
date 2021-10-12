@@ -1,10 +1,7 @@
 # Computer Vision
 Classification -> **OD** -> Segementation -> Tracking
 
-Object Detection models typically have 2 parts:
-- **Encoder**: Encoder takes an image as input and runs it through a series of blocks and layers that **learn to extract statistical features used to locate and label objects**
-- **Decoder**: output from encoder are ten passed to a decoder, which **predicts bounding boxes and labels for each object**
-
+- [Overview](#overview)
 - [Object Detection architectures](#object-detection-architectures)
 - [Object Detection Frameworks](#object-detection-frameworks)
 - [Output from an Object Detection Framework](#output-from-an-object-detection-framework)
@@ -15,6 +12,11 @@ Object Detection models typically have 2 parts:
 - [Building an Object Detection solution](#building-an-object-detection-solution)
 - [Object Detection model pipeline](#object-detection-model-pipeline)
 - [References](#references)
+
+## Overview
+Object Detection models typically have 2 parts:
+- **Encoder**: Encoder takes an image as input and runs it through a series of blocks and layers that **learn to extract statistical features used to locate and label objects**
+- **Decoder**: output from encoder are ten passed to a decoder, which **predicts bounding boxes and labels for each object**
 
 ## Object Detection architectures
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
