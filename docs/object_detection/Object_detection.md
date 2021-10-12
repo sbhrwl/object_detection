@@ -9,13 +9,14 @@ Classification -> **OD** -> Segementation -> Tracking
 - [Metrics](#metrics)
 - [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
 - [Building an Object Detection solution](#building-an-object-detection-solution)
+- [Object Detection model pipeline](#object-detection-model-pipeline)
 - [References](#references)
 
 ## Object Detection architectures
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
   - Since RCNN combines region proposals with CNNs, we call our method R-CNN: Regions with CNN features
   - **R-Region proposal** Convolution Neural Network
-- Fatser RCNN
+- Fatser RCNN (2 shot detector)
 - Mask RCNN
 - SSD
 - paulbindass@gmail.com
@@ -34,6 +35,7 @@ High level framworks are built on top of low level frameworks
 - [YoloV5](https://colab.research.google.com/drive/1MCLjg1ZPhzI9YSUseDBjCetrUEiwsu8y?usp=sharing)
   - Yolo is based on Darknet
   - [Yolo](https://github.com/ultralytics/yolov5/issues/12)
+  - Yolo has a novel architecture making **a single pass across the network**, identifyin **regions of interest**
 
 | Tensorflow | Pytorch | MxNet |
 | ---------- | ------- | ----- |
@@ -105,6 +107,9 @@ High level framworks are built on top of low level frameworks
   - Faster RCNN, RetinaNet basedmodel
 - What kind of camera was used
 - Distance from Camera
+
+## Object Detection model pipeline
+<img src='https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/cv-model_pipeline-robolflow.jpg'>
 
 ## References
 - ATC
