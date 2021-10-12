@@ -19,7 +19,7 @@ Classification -> **OD** -> Segementation -> Tracking
 - Fatser RCNN (2 shot detector)
 - Mask RCNN
 - SSD
-- paulbindass@gmail.com
+- paulbindass@gmail.com/sunny@ineuron.ai/query@ineuron.ai
 
 ## Object Detection Frameworks
 ### Low level frameworks
