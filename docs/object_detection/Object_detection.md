@@ -22,6 +22,7 @@ Object Detection models typically have 2 parts:
 - [RCNN](https://arxiv.org/pdf/1311.2524.pdf)
   - Since RCNN combines region proposals with CNNs, we call our method R-CNN: Regions with CNN features
   - **R-Region proposal** Convolution Neural Network
+  - [Video](https://www.youtube.com/watch?v=_qZITw6jLjE&t=738s)
 - Fatser RCNN (2 shot detector)
 - Mask RCNN
 - SSD
