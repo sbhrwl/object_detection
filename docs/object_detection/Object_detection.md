@@ -1,4 +1,4 @@
-# Computer Vision
+# Object Detection
 Classification -> **OD** -> Segementation -> Tracking
 
 - [Overview](#overview)
