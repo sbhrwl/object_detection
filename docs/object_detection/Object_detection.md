@@ -53,6 +53,14 @@ High level framworks are built on top of low level frameworks
 | TFOD v2 | Pytorch lightening  |  | 
 | | Yolo  |  | 
 
+### Frameworks for OD Algorithm
+| Language | Framework | Algorithm |
+| ---------- | ------- | --------- |
+| C++ | Darknet (python wrapper) | Yolo | 
+| Python | TFOD1/2, Detectron | Faster RCNN | 
+| Python | Pytorch | Yolov5 | 
+
+
 ## Output from an Object Detection Framework
 - Class of Object
 - Confidence Score
