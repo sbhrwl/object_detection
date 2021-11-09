@@ -32,7 +32,7 @@ Object Detection models typically have 2 parts:
 <img src='https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/object_detection_architectures.jpg' width=500>
 
 - [Fast RCNN]
-<img src='images/FastRCNN.jpg' width=500>
+<img src='https://github.com/sbhrwl/object_detection/blob/main/docs/object_detection/images/FastRCNN.jpg' width=500>
 
 ## Object Detection Frameworks
 ### Low level frameworks
