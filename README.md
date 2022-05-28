@@ -11,7 +11,6 @@ Classification -> **OD** -> Segementation -> Tracking
 - [Numpy Matrix and Tensors](#numpy-matrix-and-tensors)
 - [Building an Object Detection solution](#building-an-object-detection-solution)
 - [Object Detection model pipeline](#object-detection-model-pipeline)
-- [WebApp](#webapp)
 - [Projects](#projects)
 - [References](#references)
 
@@ -131,9 +130,6 @@ High level framworks are built on top of low level frameworks
 
 ## Object Detection model pipeline
 <img src='https://github.com/sbhrwl/social_distance_violations/blob/main/docs/object_detection/cv-model_pipeline-robolflow.jpg'>
-
-## WebApp
-<img src='images/webapp.jpg'>
 
 ## Projects
 - [TF Chess Piece Detector](https://wetransfer.com/downloads/50f06e73fa4a376f552b53155d52934720211106071536/11d796)
